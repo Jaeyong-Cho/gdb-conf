@@ -23,7 +23,7 @@ class multi_window:
             elif x >= 14 and x <= 18:
                 gdb.execute("continue")
             elif x >= 19 and x <= 23:
-                gdb.execute("C-c")
+                gdb.execute("interrupt")
             elif x >= 24 and x <= 28:
                 gdb.execute("finish")
         elif y == 1:

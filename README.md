@@ -29,11 +29,11 @@ set python print-stack full
 ### 
 
 ## Screenshot
-1. Arguments and Locals (click Lo)
+1. Arguments and Locals **(click 'Lo')**
 ![plot](./doc/gdb1.png)
-2. Threads (click Th)
+2. Threads **(click 'Th')**
 ![plot](./doc/gdb2.png)
-3. Backtrace and Frame (click Bt)
+3. Backtrace and Frame **(click 'Bt')**
 ![plot](./doc/gdb3.png)
-4. Breakpoint (click Bp)
+4. Breakpoint **(click 'Bp')**
 ![plot](./doc/gdb4.png)

@@ -5,7 +5,9 @@ class local_variable_window:
 
     def render(self):
         self._tui_window.erase()
-        local_variables = gdb.execute("info locals", False, True)
-        self._tui_window.write(local_variables)
+        locals = gdb.execute("info locals", False, True)
+        args = gdb.execute("info args", False, True)
+        self._tui_window.write(args)
+        self._tui_window.write(locals)
 
 gdb.register_window_type('local_variable', local_variable_window)

@@ -1,6 +1,6 @@
 # gdb-conf
 ## Introduction
-- Simple configuration of gdb
+- Simple configuration for gdb
 
 1. New gdb tui layout 'ide'
 

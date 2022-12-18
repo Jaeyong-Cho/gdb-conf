@@ -5,9 +5,14 @@
 1. New gdb tui layout 'ide'
 
 ## Installation
+### Prerequisite
+```
+sudo apt-get install libsource-highlight-dev
+```
+
 ### gdb configure compile
 ```
-./configure --enable-targets=all --with-curses --with-python
+./configure --with-gdb-datadir=[path-to-gdb]/gdb/data-directory --enable-targets=all --with-curses --with-python --enable-source-highlight
 ```
 
 ### ~/.gdbinit

@@ -24,7 +24,7 @@ set python print-stack full
 
 ## Usage
 - run gdb
-- layout ide in gdb
+- type `layout ide` in gdb
 
 ### 
 

@@ -1,7 +1,7 @@
-class backtrace_window:
+class member_variable_window:
     def __init__(self, tui_window):
         self._tui_window = tui_window
-        self._tui_window.title = 'Backtrace'
+        self._tui_window.title = 'Member'
         gdb.events.stop.connect(self.update)
         m_x = 0
         m_y = 0
@@ -11,13 +11,13 @@ class backtrace_window:
         self._tui_window.erase()
         self._tui_window.write("Focus:    |Source|Console|Windows|\n")
         self._tui_window.write("\n")
-        backtrace = gdb.execute("backtrace", False, True)
-        frame = gdb.execute("frame", False, True)
-        self._tui_window.write("backtrace\n")
-        self._tui_window.write(backtrace)
-        self._tui_window.write("\n")
-        self._tui_window.write("frame\n")
-        self._tui_window.write(frame)
+        locals = gdb.execute("info locals", False, True)
+        locals_arr = locals.split()
+        
+        if locals[0] == "this":
+            member = gdb.execute("p *this", False, True)
+            self._tui_window.write("member:\n")
+            self._tui_window.write(member)
 
     def click(self, x, y, button):
         self.m_x = y
@@ -30,11 +30,12 @@ class backtrace_window:
             elif x >= 17 and x <= 24:
                 gdb.execute("focus cmd")
             elif x >= 25 and x <= 32:
-                gdb.execute("focus backtrace")
+                gdb.execute("focus member")
         else:
-            gdb.execute("focus backtrace")
+            gdb.execute("focus member")
+
 
     def update(self, event):
         self.render()
 
-gdb.register_window_type('backtrace', backtrace_window)
+gdb.register_window_type('member', member_variable_window)

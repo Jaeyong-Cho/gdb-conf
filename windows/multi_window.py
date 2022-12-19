@@ -8,15 +8,11 @@ class multi_window:
         self._tui_window = tui_window
         self._tui_window.title = 'Locals'
         gdb.events.stop.connect(self.update)
-        gdb.execute("define hookpost-next\n refresh \nend")
-        gdb.execute("define hookpost-step\n refresh \nend")
-        gdb.execute("define hookpost-step\n refresh \nend")
-        gdb.execute("define hookpost-finish\n refresh \nend")
 
     def click(self, x, y, button):
-        m_x = y
-        m_y = x
-        m_button = button
+        self.m_x = y
+        self.m_y = x
+        self.m_button = button
         if y == 0:
             if x >= 10 and x <= 16:
                 gdb.execute("focus src")
@@ -56,7 +52,7 @@ class multi_window:
                 self.print_breakpoint()
         elif y == 3:
             if self.m_current_window == 1:
-                current_thread_str = gdb.execute("thread", False, True)
+                current_thread_str = gdb.selected_thread()
                 current_thread_split = current_thread_str.split()
                 current_thread_id = current_thread_split[3]
 

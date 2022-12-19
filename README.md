@@ -34,4 +34,4 @@ set python print-stack full
 ### 
 
 ## Screenshot
-![plot](./doc/gdb.png)
+![plot](./doc/layout_ide.png)

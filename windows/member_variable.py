@@ -55,8 +55,7 @@ class member_variable_window:
         for i in range(self.m_view_y, self.m_win_len):
             win_temp += win_line[i] + "\n";
 
-        self._tui_window.erase()
-        self._tui_window.write(win_temp)
+        self._tui_window.write(win_temp, True)
 
     def update(self):
         self.render()

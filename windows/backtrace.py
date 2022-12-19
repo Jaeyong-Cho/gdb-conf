@@ -2,7 +2,7 @@ class backtrace_window:
     def __init__(self, tui_window):
         self._tui_window = tui_window
         self._tui_window.title = 'Backtrace'
-        gdb.events.stop.connect(self.update)
+        gdb.events.before_prompt.connect(self.update)
         self._x = 0
         self.m_y = 0
         self.m_button = 1
@@ -53,10 +53,9 @@ class backtrace_window:
         for i in range(self.m_view_y, self.m_win_len):
             win_temp += win_line[i] + "\n";
 
-        self._tui_window.erase()
-        self._tui_window.write(win_temp)
+        self._tui_window.write(win_temp, True)
 
-    def update(self, event):
+    def update(self):
         self.render()
 
 gdb.register_window_type('backtrace', backtrace_window)

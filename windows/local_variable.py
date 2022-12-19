@@ -3,21 +3,24 @@ class local_variable_window:
         self._tui_window = tui_window
         self._tui_window.title = 'Locals'
         gdb.events.stop.connect(self.update)
-        m_x = 0
-        m_y = 0
-        m_button = 1
+        self.m_x = 0
+        self.m_y = 0
+        self.m_button = 1
+        self.m_view_y = 0
+        self.m_window_data = ""
+        self.m_win_len = 0
 
     def render(self):
-        self._tui_window.erase()
-        self._tui_window.write("Focus:    |Source|Console|Windows|\n")
-        self._tui_window.write("\n")
-        locals = gdb.execute("info locals", False, True)
-        args = gdb.execute("info args", False, True)
-        self._tui_window.write("args:\n")
-        self._tui_window.write(args)
-        self._tui_window.write("\n")
-        self._tui_window.write("locals:\n")
-        self._tui_window.write(locals)
+        self.m_window_data = "Focus:    |Source|Console|Windows|\n\n"
+        self.m_window_data += "args:\n"
+        self.m_window_data += gdb.execute("info args", False, True)
+        self.m_window_data += "\n"
+        self.m_window_data += "locals:\n"
+        self.m_window_data += gdb.execute("info locals", False, True)
+
+        win_line = self.m_window_data.splitlines()
+        self.m_win_len = win_line.__len__()
+        self.print_win()
 
     def click(self, x, y, button):
         self.m_x = y
@@ -33,6 +36,25 @@ class local_variable_window:
                 gdb.execute("focus local")
         else:
             gdb.execute("focus local")
+
+    def vscroll(self, num):
+        self.m_view_y += num
+        if self.m_view_y < 0:
+            self.m_view_y = 0
+        elif self.m_view_y > self.m_win_len:
+            self.m_view_y = self.m_win_len
+
+        self.print_win()
+
+    def print_win(self):
+        win_line = self.m_window_data.splitlines()
+        win_temp = ""
+
+        for i in range(self.m_view_y, self.m_win_len):
+            win_temp += win_line[i] + "\n";
+
+        self._tui_window.erase()
+        self._tui_window.write(win_temp)
 
 
     def update(self, event):

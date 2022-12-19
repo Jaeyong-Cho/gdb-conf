@@ -8,6 +8,7 @@
 ### Prerequisite
 ```
 sudo apt-get install libsource-highlight-dev libstdc++6
+pip install pygments==2.2.0
 ```
 
 ### gdb configure compile

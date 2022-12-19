@@ -55,6 +55,7 @@ class member_variable_window:
         for i in range(self.m_view_y, self.m_win_len):
             win_temp += self.m_win_line[i] + "\n";
 
+        win_temp = hl._tui_text_highlight(win_temp)
         self._tui_window.write(win_temp, True)
 
     def update(self):

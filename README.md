@@ -30,8 +30,10 @@ set python print-stack full
 ## Usage
 - run gdb
 - type `layout ide` in gdb
+- type `layout ide1` in gdb
+- type `layout ide2` in gdb
 
 ### 
 
 ## Screenshot
-![plot](./doc/layout_ide.png)
+![plot](./doc/layout_ide1.png)

@@ -1,4 +1,10 @@
 import glob
+import sys
+
+# gdb pretty printing of c++ STL
+sys.path.insert(0, '/usr/share/gcc/python')
+from libstdcxx.v6.printers import register_libstdcxx_printers
+register_libstdcxx_printers (None)
 
 python_dir = "/home/jaeyong/gdb-conf/commands"
 

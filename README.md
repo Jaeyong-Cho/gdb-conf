@@ -7,7 +7,7 @@
 ## Installation
 ### Prerequisite
 ```
-sudo apt-get install libsource-highlight-dev
+sudo apt-get install libsource-highlight-dev libstdc++6
 ```
 
 ### gdb configure compile

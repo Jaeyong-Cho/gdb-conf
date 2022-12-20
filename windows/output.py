@@ -66,7 +66,7 @@ class output_window:
                 win_temp += "\n"
             start_line = 0
 
-        for i in range(start_line, end_line - 1):
+        for i in range(start_line + 1, end_line):
             win_temp += self.m_win_line[i] + "\n"
 
         win_temp += "\n"

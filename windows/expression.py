@@ -15,7 +15,7 @@ class expression_window:
         self.m_last_value = [""] * 20
 
     def render(self):
-        self.m_window_data = "Focus:    |Source|Console|Windows|\n\n"
+        self.m_window_data = ""
         self.m_window_data += "display:\n"
         self.m_window_data += gdb.execute("info display", False, True)
 
@@ -60,9 +60,9 @@ class expression_window:
         self.print_win()
 
     def print_win(self):
-        win_temp = ""
+        win_temp = "Focus:    |Source|Console|Windows|\n\n"
 
-        for i in range(self.m_view_y, self.m_win_len):
+        for i in range(self.m_view_y, self.m_win_len -1):
             win_temp += self.m_win_line[i] + "\n";
 
         win_temp = hl._tui_text_highlight(win_temp)

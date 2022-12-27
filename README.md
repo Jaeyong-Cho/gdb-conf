@@ -7,7 +7,7 @@
 ## Installation
 ### Prerequisite
 ```
-sudo apt-get install libsource-highlight-dev libstdc++6
+sudo apt-get install libsource-highlight-dev libstdc++6 libncurses-dev
 pip install pygments==2.2.0
 ```
 

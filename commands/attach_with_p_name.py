@@ -1,3 +1,4 @@
+import gdb_attach as ga
 import psutil
 
 class AttachWithProcessName(gdb.Command):
@@ -7,13 +8,6 @@ class AttachWithProcessName(gdb.Command):
 
     def invoke(self, arg, from_tty):
         name = gdb.string_to_argv(arg)[0]
-        processes = psutil.process_iter()
-        for proc in processes:
-            if proc.name() == name:
-                gdb.execute("attach " + str(proc.pid))
-                print("Attach to pid: " + str(proc.pid))
-                return
-
-        print("Process not found with name " + name)
+        ga.attach_with_process_name(name)
 
 AttachWithProcessName()

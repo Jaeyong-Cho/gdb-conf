@@ -1,2 +1,6 @@
 *.~
 __pycache__
+
+# gdb_log
+.gdb_history
+gdb.out

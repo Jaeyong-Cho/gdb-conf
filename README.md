@@ -4,6 +4,7 @@
 
 1. New gdb tui layout 'ide'
 2. New command `attach-with-name` : attach gdb with process name
+3. New module `gdb-attach` : python api related with attaching gdb
 
 ## Installation
 ### Prerequisite
@@ -45,3 +46,4 @@ set python print-stack full
 ## Todo
 - Fix directory path
 - Fix source_py.py
+- Wiki

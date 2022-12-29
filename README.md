@@ -39,7 +39,9 @@ set python print-stack full
 - type `layout ide1` in gdb
 - type `layout ide2` in gdb
 
-### 
-
 ## Screenshot
 ![plot](./doc/layout_ide1.png)
+
+## Todo
+- Fix directory path
+- Fix source_py.py

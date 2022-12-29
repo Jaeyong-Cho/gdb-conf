@@ -3,17 +3,22 @@
 - Simple configuration for gdb
 
 1. New gdb tui layout 'ide'
+2. New command `attach-with-name` : attach gdb with process name
 
 ## Installation
 ### Prerequisite
 ```
 sudo apt-get install libsource-highlight-dev libstdc++6 libncurses-dev
-pip install pygments==2.2.0
+```
+#### Python modules
+```
+psutil
+pygment
 ```
 
 ### gdb configure compile
 ```
-./configure --with-gdb-datadir=[path-to-gdb]/gdb/data-directory --enable-targets=all --with-curses --with-python --enable-source-highlight
+./configure --with-gdb-datadir=[path-to-gdb]/gdb/data-directory --enable-targets=all --with-curses --with-python=[path-to-python] --enable-source-highlight
 ```
 
 ### ~/.gdbinit
